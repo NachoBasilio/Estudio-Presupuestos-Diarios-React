@@ -1,9 +1,13 @@
 import React from 'react'
 import CerrarBtn from '../img/cerrar.svg'
 
-export default function Modal({setModal}) {
+export default function Modal({setModal, animarModal, setAnimarModal}) {
     const ocultarModal = ()=>{
-        setModal(false)
+        setAnimarModal(false)
+
+        setTimeout(() => {
+            setModal(false)
+        }, 400);
     }
 
     return (
@@ -15,6 +19,9 @@ export default function Modal({setModal}) {
                 onClick={ocultarModal}
                 />
             </div>
+            <form action="" className={`formulario ${animarModal ? 'animar' : 'cerrar' }`}>
+                <legend>Nuevo Gasto</legend>
+            </form>
         </div>
   )
 }
