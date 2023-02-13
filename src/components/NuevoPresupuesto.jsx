@@ -25,6 +25,14 @@ export default function NuevoPresupuesto({presupuesto, setPresupuesto, setisVali
                     className='nuevo-presupuesto'
                     placeholder='Añade tu presupuesto'
                     value={presupuesto}
+                    onMouseOver={(e)=>{
+                      presupuesto == 0 ? 
+                      e.target.value = "" :
+                      e.target.value = presupuesto
+                    }}
+                    onMouseOut={(e)=>{
+                      e.target.value = presupuesto
+                    }}
                     onChange={e=> setPresupuesto(Number(e.target.value))}
                 />
                 <input type="submit" value="Añadir" />
