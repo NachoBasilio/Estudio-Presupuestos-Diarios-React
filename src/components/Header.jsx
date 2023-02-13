@@ -3,7 +3,7 @@ import NuevoPresupuesto from './NuevoPresupuesto'
 import ControlPresupuesto from './ControlPresupuesto'
 
 
-export const Header = ({presupuesto, setPresupuesto, isValidPresupuesto, setisValidPresupuesto}) => {
+export default function Header({presupuesto, setPresupuesto, isValidPresupuesto, setisValidPresupuesto}){
   return (
     <header>
         <h1>Planificador de Gastos</h1>
