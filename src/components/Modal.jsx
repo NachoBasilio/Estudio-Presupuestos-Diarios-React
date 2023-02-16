@@ -16,7 +16,6 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
             setMensaje("Todos los campos son obligatorios")
 
             setTimeout(()=>{
-                setMensaje("")
             },3000)
 
             return
@@ -30,6 +29,7 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
         setTimeout(() => {
             setModal(false)
         }, 400);
+
     }
 
     return (

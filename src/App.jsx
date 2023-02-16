@@ -25,6 +25,11 @@ function App() {
   const guardarGastos = (gasto) => {
     gasto.id = generarId(generarId)
     setGastos([...gastos, gasto])
+    setAnimarModal(false)
+
+    setTimeout(() => {
+        setModal(false)
+    }, 400);
   }
 
   return (
