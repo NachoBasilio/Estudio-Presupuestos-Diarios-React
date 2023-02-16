@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header  from './components/Header'
 import Modal from './components/Modal'
+import {generarId} from './helpers'
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
 
 
@@ -22,6 +23,7 @@ function App() {
   }
 
   const guardarGastos = (gasto) => {
+    gasto.id = generarId(generarId)
     setGastos([...gastos, gasto])
   }
 
