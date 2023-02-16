@@ -1,11 +1,26 @@
 import {useState} from 'react'
 import CerrarBtn from '../img/cerrar.svg'
+import Mensaje from './Mensaje'
 
-export default function Modal({setModal, animarModal, setAnimarModal}) {
+export default function Modal({setModal, animarModal, setAnimarModal, guardarGastos}) {
+    const [mensaje, setMensaje] = useState("")
     const [nombre, setNombre] = useState("")
     const [cantidad, setCantidad] = useState(0)
     const [categoria, setCategoria] = useState("")
 
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        if([nombre, cantidad, categoria].includes('')){
+            setMensaje("Todos los campos son obligatorios")
+
+            setTimeout(()=>{
+                setMensaje("")
+            },3000)
+
+            return
+        }
+        guardarGastos({nombre, cantidad, categoria})
+    }
 
     const ocultarModal = ()=>{
         setAnimarModal(false)
@@ -24,8 +39,11 @@ export default function Modal({setModal, animarModal, setAnimarModal}) {
                 onClick={ocultarModal}
                 />
             </div>
-            <form action="" className={`formulario ${animarModal ? 'animar' : 'cerrar' }`}>
+            <form 
+            onSubmit={handleSubmit}
+            action="" className={`formulario ${animarModal ? 'animar' : 'cerrar' }`}>
                 <legend>Nuevo Gasto</legend>
+                {mensaje && <Mensaje tipo="error">{mensaje}</Mensaje>}
                 <div className='campo'>
                     <label htmlFor="nombre">Nombre Gasto</label>
                     <input 
@@ -48,7 +66,7 @@ export default function Modal({setModal, animarModal, setAnimarModal}) {
                 </div>
                 <div className='campo'>
                     <label htmlFor="categoria">Categoria</label>
-                    <select name="" id="categoria" value={categoria} onChange={e => setCategoria(e.target.value)}>
+                    <select name="" id="categoria" value={categoria} defaultValue="" onChange={e => setCategoria(e.target.value)}>
                         <option value="" selected disabled hidden>-- Seleccione --</option>
                         <option value="Ahorro">Ahorro</option>
                         <option value="Comida">Comida</option>
