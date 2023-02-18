@@ -76,7 +76,7 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
                         <option value="Ocio">Ocio</option>
                         <option value="Gastos">Gastos varios</option>
                         <option value="Salud">Salud</option>
-                        <option value="Subscripciones">Subscripciones</option>
+                        <option value="Suscripciones">Suscripciones</option>
                     </select>
                 </div>
                 <input 
