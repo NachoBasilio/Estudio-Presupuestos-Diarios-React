@@ -1,6 +1,15 @@
-import React from 'react'
+import {useEffect, useState} from 'react'
 
-export default function ControlPresupuesto({presupuesto}) {
+export default function ControlPresupuesto({presupuesto, gastos}) {
+    const [disponible, setDisponible] = useState(0)
+    const [gastado, setGastado] = useState(0)
+
+    useEffect(()=>{
+        const totalGastado = gastos.reduce((total, actual)=> actual.cantidad + total,0)
+        console.log(totalGastado)
+        setGastado(totalGastado)
+    }, [gastos])
+
     const formatearDinero = (numero)=>{
         return numero.toLocaleString('en-US',{
             style: 'currency',
@@ -19,10 +28,10 @@ export default function ControlPresupuesto({presupuesto}) {
                     <span>Presupesto:</span>  {formatearDinero(presupuesto)}
                 </p>
                 <p>
-                    <span>Disponible:</span> {formatearDinero(0)}
+                    <span>Disponible:</span> {formatearDinero(disponible)}
                 </p>
                 <p>
-                    <span>Gastado:</span> {formatearDinero(0)}
+                    <span>Gastado:</span> {formatearDinero(gastado)}
                 </p>
             </div>
         </div>
