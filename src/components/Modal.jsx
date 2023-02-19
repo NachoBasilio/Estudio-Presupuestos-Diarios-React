@@ -70,6 +70,7 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
                     type="number"
                     placeholder='Añade la cantidad del gasto'
                     id="cantidad" 
+                    value={cantidad}
                     onMouseOver={(e)=>{
                         cantidad == 0 ? 
                         e.target.value = "" :
