@@ -1,14 +1,22 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Mensaje from './Mensaje'
 import CerrarBtn from '../img/cerrar.svg'
 
 
 
-export default function Modal({setModal, animarModal, setAnimarModal, guardarGastos}) {
+export default function Modal({setModal, animarModal, setAnimarModal, guardarGastos, gastoEditar}) {
     const [mensaje, setMensaje] = useState("")
     const [nombre, setNombre] = useState("")
     const [cantidad, setCantidad] = useState(0)
     const [categoria, setCategoria] = useState("")
+
+    useEffect(()=>{
+        if(Object.keys(gastoEditar).length > 0){
+            setNombre(gastoEditar.nombre)
+            setCategoria(gastoEditar.categoria)
+            setCantidad(gastoEditar.cantidad)
+        }
+    },[])
 
     const handleSubmit = (e)=>{
         e.preventDefault()
@@ -63,12 +71,12 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
                     placeholder='Añade la cantidad del gasto'
                     id="cantidad" 
                     onMouseOver={(e)=>{
-                        presupuesto == 0 ? 
+                        cantidad == 0 ? 
                         e.target.value = "" :
-                        e.target.value = presupuesto
+                        e.target.value = cantidad
                     }}
                     onMouseOut={(e)=>{
-                        e.target.value = presupuesto
+                        e.target.value = cantidad
                     }}
 
                     onChange={e => setCantidad(Number(e.target.value))} 
