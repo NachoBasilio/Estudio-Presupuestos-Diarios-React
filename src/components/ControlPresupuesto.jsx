@@ -6,7 +6,9 @@ export default function ControlPresupuesto({presupuesto, gastos}) {
 
     useEffect(()=>{
         const totalGastado = gastos.reduce((total, actual)=> actual.cantidad + total,0)
-        console.log(totalGastado)
+        const totalDisponible = presupuesto - totalGastado
+
+        setDisponible(totalDisponible)
         setGastado(totalGastado)
     }, [gastos])
 

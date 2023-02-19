@@ -62,7 +62,15 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
                     type="number"
                     placeholder='Añade la cantidad del gasto'
                     id="cantidad" 
-                    value={cantidad}
+                    onMouseOver={(e)=>{
+                        presupuesto == 0 ? 
+                        e.target.value = "" :
+                        e.target.value = presupuesto
+                    }}
+                    onMouseOut={(e)=>{
+                        e.target.value = presupuesto
+                    }}
+
                     onChange={e => setCantidad(Number(e.target.value))} 
                     />
                 </div>
