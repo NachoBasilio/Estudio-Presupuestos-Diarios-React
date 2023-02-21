@@ -35,14 +35,20 @@ function App() {
   }
 
   const guardarGastos = (gasto) => {
-    gasto.id = generarId(generarId)
     gasto.fecha = Date.now()
-    setGastos([...gastos, gasto])
-    setAnimarModal(false)
+    if(gasto.id){
+      const gastosActualizados = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState)
+      setGastos(gastosActualizados)
 
+    }else{
+      gasto.id = generarId(generarId)
+      setGastos([...gastos, gasto])
+    }
+    setAnimarModal(false)
     setTimeout(() => {
-        setModal(false)
-    }, 400);
+      setModal(false)
+  }, 400);
+
   }
 
   return (

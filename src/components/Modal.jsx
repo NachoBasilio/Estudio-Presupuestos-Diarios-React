@@ -9,7 +9,7 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
     const [nombre, setNombre] = useState("")
     const [cantidad, setCantidad] = useState(0)
     const [categoria, setCategoria] = useState("")
-    const [id, setID] = useState("")
+    const [id, setID] = useState("") 
 
     useEffect(()=>{
         if(Object.keys(gastoEditar).length > 0){
@@ -30,7 +30,7 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
 
             return
         }
-        guardarGastos({nombre, cantidad, categoria})
+        guardarGastos({nombre, cantidad, categoria, id})
     }
 
     const ocultarModal = ()=>{
