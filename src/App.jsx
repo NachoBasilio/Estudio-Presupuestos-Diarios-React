@@ -35,12 +35,13 @@ function App() {
   }
 
   const guardarGastos = (gasto) => {
-    gasto.fecha = Date.now()
+    
     if(gasto.id){
       const gastosActualizados = gastos.map(gastoState => gastoState.id === gasto.id ? gasto : gastoState)
       setGastos(gastosActualizados)
 
     }else{
+      gasto.fecha = Date.now()
       gasto.id = generarId(generarId)
       setGastos([...gastos, gasto])
     }

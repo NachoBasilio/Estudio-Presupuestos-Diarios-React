@@ -9,6 +9,7 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
     const [nombre, setNombre] = useState("")
     const [cantidad, setCantidad] = useState(0)
     const [categoria, setCategoria] = useState("")
+    const [fecha, setFecha] = useState("")
     const [id, setID] = useState("") 
 
     useEffect(()=>{
@@ -17,6 +18,7 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
             setCategoria(gastoEditar.categoria)
             setCantidad(gastoEditar.cantidad)
             setID(gastoEditar.id)
+            setFecha(gastoEditar.fecha)
         }
     },[])
 
@@ -30,7 +32,7 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
 
             return
         }
-        guardarGastos({nombre, cantidad, categoria, id})
+        guardarGastos({nombre, cantidad, categoria, id, fecha})
     }
 
     const ocultarModal = ()=>{
