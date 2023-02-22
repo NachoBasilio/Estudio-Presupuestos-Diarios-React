@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 import Gasto from './Gasto'
 
-export default function ListadoGastos({gastos, setGastoEditar }) {
+export default function ListadoGastos({gastos, setGastoEditar, eliminarGasto}) {
 
 
     return (
@@ -11,6 +11,7 @@ export default function ListadoGastos({gastos, setGastoEditar }) {
 
             {gastos.map(gasto =>(
                 <Gasto 
+                eliminarGasto={eliminarGasto}
                 gasto={gasto}
                 setGastoEditar={setGastoEditar}
                 key={gasto.id}/>

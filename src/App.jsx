@@ -34,6 +34,11 @@ function App() {
     }, 250)
   }
 
+  const eliminarGasto = (id)=>{
+    const gastosActualizados = gastos.filter(gasto => gasto.id !== id)
+    setGastos(gastosActualizados)
+  }
+
   const guardarGastos = (gasto) => {
     
     if(gasto.id){
@@ -67,6 +72,7 @@ function App() {
           <>
           <main>
             <ListadoGastos 
+              eliminarGasto={eliminarGasto}
               gastos={gastos}
               setGastoEditar={setGastoEditar}
             ></ListadoGastos>
