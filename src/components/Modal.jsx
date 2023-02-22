@@ -4,7 +4,7 @@ import CerrarBtn from '../img/cerrar.svg'
 
 
 
-export default function Modal({setModal, animarModal, setAnimarModal, guardarGastos, gastoEditar}) {
+export default function Modal({setModal, animarModal, setAnimarModal, guardarGastos, gastoEditar, setGastoEditar}) {
     const [mensaje, setMensaje] = useState("")
     const [nombre, setNombre] = useState("")
     const [cantidad, setCantidad] = useState(0)
@@ -37,7 +37,7 @@ export default function Modal({setModal, animarModal, setAnimarModal, guardarGas
 
     const ocultarModal = ()=>{
         setAnimarModal(false)
-
+        setGastoEditar({})
         setTimeout(() => {
             setModal(false)
         }, 400);
