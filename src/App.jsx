@@ -1,5 +1,6 @@
 import { useState, useEffect} from 'react'
 import Header  from './components/Header'
+import Filtro  from './components/Filtro'
 import Modal from './components/Modal'
 import ListadoGastos from './components/ListadoGastos'
 import {generarId} from './helpers'
@@ -10,13 +11,24 @@ function App() {
   const [presupuesto, setPresupuesto] = useState(
     Number(localStorage.getItem('presupuesto')) ?? 0
   )
-  const [isValidPresupuesto, setisValidPresupuesto]= useState(false)
-  const [modal, setModal] = useState(false)
-  const [animarModal, setAnimarModal] = useState(false)
   const [gastos, setGastos] = useState(
     JSON.parse(localStorage.getItem('gastos')) ?? []
   )
+  const [isValidPresupuesto, setisValidPresupuesto]= useState(false)
+  const [modal, setModal] = useState(false)
+  const [animarModal, setAnimarModal] = useState(false)
   const [gastoEditar, setGastoEditar] = useState({})
+  const [filtro, setFiltro] = useState("")
+  const [gastosFiltrados, setGastosFiltrados] = useState([])
+
+
+  useEffect(()=>{
+    if(filtro){
+      const gastosFiltrados = gastos.filter(gasto => gasto.categoria === filtro)
+      setGastosFiltrados(gastosFiltrados)
+    }
+  },[filtro])
+
 
   useEffect(()=>{
     if(Object.keys(gastoEditar).length > 0){
@@ -96,7 +108,13 @@ function App() {
         isValidPresupuesto && (
           <>
           <main>
+            <Filtro
+            filtro={filtro}
+            setFiltro={setFiltro}
+            ></Filtro>
             <ListadoGastos 
+              filtro={filtro}
+              gastosFiltrados={gastosFiltrados}
               eliminarGasto={eliminarGasto}
               gastos={gastos}
               setGastoEditar={setGastoEditar}

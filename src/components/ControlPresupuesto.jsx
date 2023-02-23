@@ -32,10 +32,10 @@ export default function ControlPresupuesto({presupuesto, gastos}) {
         <div className='contenedor-presupuesto contenedor sombra dos-columnas'>
             <div>
                 <CircularProgressbar
-                style={buildStyles({
-                    pathColor: '#3B82F6',
+                styles={buildStyles({
+                    pathColor: porcentaje > 100 ? '#DC2626' :'#3B82F6',
                     trailColor: '#F5F5F5',
-                    textColor: '#3B82F6'
+                    textColor: porcentaje > 100 ? '#DC2626' :'#3B82F6',
                 })}
                 value={porcentaje}
                 text={`${porcentaje} Gastado`}
@@ -45,7 +45,7 @@ export default function ControlPresupuesto({presupuesto, gastos}) {
                 <p>
                     <span>Presupesto:</span>  {formatearDinero(presupuesto)}
                 </p>
-                <p>
+                <p className={`${disponible < 0 ? 'negativo': ''}`}>
                     <span>Disponible:</span> {formatearDinero(disponible)}
                 </p>
                 <p>
