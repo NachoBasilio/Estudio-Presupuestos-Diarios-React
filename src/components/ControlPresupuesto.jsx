@@ -48,7 +48,7 @@ export default function ControlPresupuesto({setisValidPresupuesto, presupuesto, 
                     textColor: porcentaje > 100 ? '#DC2626' :'#3B82F6',
                 })}
                 value={porcentaje}
-                text={`${porcentaje}% `}
+                text={`${porcentaje > 100 ? 'Sobre estendido' : porcentaje +"%"} `}
                 ></CircularProgressbar>
             </div>
             <div className='contenido-presupuesto'>
