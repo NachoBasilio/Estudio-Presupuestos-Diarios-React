@@ -12,11 +12,12 @@ export default function ControlPresupuesto({setisValidPresupuesto, presupuesto, 
         const totalDisponible = presupuesto - totalGastado
 
         const porcentajeGastado = (((presupuesto - totalDisponible)/presupuesto)*100).toFixed(2)
-        setPorcentaje(porcentajeGastado)
+        
 
         setTimeout(() => {
+            setPorcentaje(porcentajeGastado)
             setDisponible(totalDisponible) 
-        }, 1000);
+        }, 1500);
         setGastado(totalGastado)
     }, [gastos])
 
@@ -47,7 +48,7 @@ export default function ControlPresupuesto({setisValidPresupuesto, presupuesto, 
                     textColor: porcentaje > 100 ? '#DC2626' :'#3B82F6',
                 })}
                 value={porcentaje}
-                text={`${porcentaje} Gastado`}
+                text={`${porcentaje}% `}
                 ></CircularProgressbar>
             </div>
             <div className='contenido-presupuesto'>
